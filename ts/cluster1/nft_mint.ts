@@ -13,16 +13,18 @@ const myKeypairSigner = createSignerFromKeypair(umi, keypair);
 umi.use(signerIdentity(myKeypairSigner));
 umi.use(mplTokenMetadata())
 
+
 const mint = generateSigner(umi);
 
 (async () => {
     let tx = createNft(umi, {
         mint,
-        name: "aceCard",
-        symbol: "ACE",
-        uri: "https://devnet.irys.xyz/9ivPhiyKb9paFBXZU9ustn1v6m9p9UvqUNt3SEGKDAW5",
+        name: "David's rug",
+        symbol: "TRUG",
+        uri: "https://devnet.irys.xyz/7UQuZQHBVBUs4GkaoCyjbuEZU96Z8Ky9Etv22YhfvzDj",
         sellerFeeBasisPoints: percentAmount(5)
     })
+    
     let result = await tx.sendAndConfirm(umi);
     const signature = base58.encode(result.signature);
 

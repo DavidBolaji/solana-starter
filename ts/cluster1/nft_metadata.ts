@@ -9,32 +9,29 @@ const umi = createUmi('https://api.devnet.solana.com');
 let keypair = umi.eddsa.createKeypairFromSecretKey(new Uint8Array(wallet));
 const signer = createSignerFromKeypair(umi, keypair);
 
-umi.use(irysUploader());
+// umi.use(irysUploader());
+umi.use(irysUploader({address: "https://devnet.irys.xyz/" }));
 umi.use(signerIdentity(signer));
 
 (async () => {
     try {
-        const irysURI = "https://gateway.irys.xyz/9ivPhiyKb9paFBXZU9ustn1v6m9p9UvqUNt3SEGKDAW5".replace(
-            "https://gateway.irys.xyz/",
-            "https://devnet.irys.xyz/"
-        )
         // Follow this JSON structure
         // https://docs.metaplex.com/programs/token-metadata/changelog/v1.0#json-structure
 
-        const image = irysURI
+        const image = "https://devnet.irys.xyz/664zz2aHKuaLeRU8at643xHuehipvikTujeeTHGGrSMt"
         const metadata = {
-            name: "aceCard",
-            symbol: "ACE",
-            description: "this is a test ace card",
+            name: "Test rug",
+            symbol: "TRUG",
+            description: "A test rug",
             image,
             attributes: [
-                {trait_type: 'Card Typw', value: 'Ace'}
+                {trait_type: 'colors', value: '14'}
             ],
             properties: {
                 files: [
                     {
                         type: "image/png",
-                        uri: "image"
+                        uri: image
                     },
                 ]
             },

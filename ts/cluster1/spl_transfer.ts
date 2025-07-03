@@ -24,7 +24,7 @@ const to = new PublicKey("DzFcpV8WUFfuc21Ny8YmomasZapTXB9E34P9utnPsajf");
         const toAccount = await getOrCreateAssociatedTokenAccount(connection, keypair, mint, to)
 
         // Transfer the new token to the "toTokenAccount" we just created
-        const tx = await transfer(connection, keypair, fromAccount.address, toAccount.address, keypair.publicKey, 1);
+        const tx = await transfer(connection, keypair, fromAccount.address, toAccount.address, keypair.publicKey, 1_000_000n);
 
         console.log(`Your transfer txId is ${tx}`)
     } catch(e) {
